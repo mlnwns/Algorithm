@@ -1,15 +1,13 @@
 N = int(input())
-sizes = map(int, input().split())
+sizes = list(map(int, input().split()))
 T, P = map(int, input().split())
 
-cnt = 0
-for size in sizes:
-    if size == 0: 
-        continue
-    elif size % T == 0:
-        cnt += size // T
-    else:
-        cnt += size // T + 1
+total = 0
+for i in range(len(sizes)):
+    total += (sizes[i] // T) + 1
+    if sizes[i] % T == 0:
+        total -= 1
+print(total)
 
-print(cnt)
-print(N//P, N%P)
+print(N//P, end=" ")
+print(N%P)
