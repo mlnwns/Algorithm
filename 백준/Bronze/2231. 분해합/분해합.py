@@ -1,10 +1,9 @@
-n = int(input())
-result = 0
-for i in range(1, n+1):
-    nums = list(map(int, str(i)))
-    result = sum(nums) + i
-    if result == n:
-        print(i)
-        break
-    if i == n:
-        print(0)
+def find_smallest_generator(N):
+    for i in range(1, N + 1):
+        decomposition_sum = i + sum(map(int, str(i)))
+        if decomposition_sum == N:
+            return i
+    return 0
+
+N = int(input())
+print(find_smallest_generator(N))
