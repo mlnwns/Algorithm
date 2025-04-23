@@ -1,21 +1,15 @@
-const input = require("fs")
+const [L, list] = require("fs")
   .readFileSync("/dev/stdin")
   .toString()
   .trim()
   .split("\n");
 
-const list = input[1].split("");
+const MOD = 1234567891n;
+let hash = 0n,
+  power = 1n;
 
-function solution(list) {
-  let hash = 0;
-  let power = 1;
-
-  for (let i = 0; i < list.length; i++) {
-    hash += (list[i].charCodeAt(0) - 96) * power;
-    power *= 31;
-  }
-  hash = hash % 1234567891;
-  console.log(hash);
+for (let i = 0; i < L; i++) {
+  hash += BigInt(list[i].charCodeAt(0) - 96) * power;
+  power *= 31n;
 }
-
-solution(list);
+console.log((hash % MOD).toString());
