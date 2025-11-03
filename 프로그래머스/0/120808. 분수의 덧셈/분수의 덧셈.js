@@ -8,11 +8,6 @@ function solution(numer1, denom1, numer2, denom2) {
     
     const gcdNum = gcd(denom, numer);
     
-    if(gcdNum !== 0){
-        denom /= gcdNum;
-        numer /= gcdNum;
-    };
-    
-    const answer = [numer, denom];
+    const answer = [numer/gcdNum, denom/gcdNum];
     return answer;
 }
