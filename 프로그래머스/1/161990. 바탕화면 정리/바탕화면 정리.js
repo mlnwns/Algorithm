@@ -1,21 +1,20 @@
 function solution(wallpaper) {
-	const fileMap = [];
+	const rows = [];
+	const cols = [];
 
-	for (let i = 0; i < wallpaper.length; i++) {
-		for (let j = 0; j < wallpaper[i].length; j++) {
-			if (wallpaper[i][j] === "#") {
-				fileMap.push([i, j]);
+	wallpaper.forEach((row, i) => {
+		[...row].forEach((cell, j) => {
+			if (cell === "#") {
+				rows.push(i);
+				cols.push(j);
 			}
-		}
-	}
+		});
+	});
 
-	const rows = fileMap.map(([i]) => i);
-	const cols = fileMap.map(([, j]) => j);
-
-	const topRow = Math.min(...rows);
-	const leftCol = Math.min(...cols);
-	const bottomRow = Math.max(...rows) + 1;
-	const rightCol = Math.max(...cols) + 1;
-
-	return [topRow, leftCol, bottomRow, rightCol];
+	return [
+		Math.min(...rows),
+		Math.min(...cols),
+		Math.max(...rows) + 1,
+		Math.max(...cols) + 1,
+	];
 }
